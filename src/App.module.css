@@ -1,0 +1,81 @@
+.App {
+    margin-top: auto;
+    background: black;
+}
+.AppContainer{
+    display:flex;
+}
+
+.MainCounter {
+    margin-top: 100px;
+    border-radius: 50px 50px 50px 50px;
+    width: 500px;
+    height: 250px;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px;
+    background-color: palegreen;
+    border: 1px solid black;
+}
+
+.Monitor {
+    border-radius: 50px 50px 50px 50px;
+    height: 100px;
+    width: 500px;
+    background: aqua;
+    border: 1px black solid;
+}
+
+.Buttons {
+    border-radius: 50px 50px 50px 50px;
+    margin-top: 25px;
+    background: aqua;
+    border: 1px black solid;
+    }
+.inc{
+    border-radius: 50px 50px 50px 50px;
+    display: inline-block;
+    margin-right: 50px ;
+    background: aqua;
+    border: 1px black solid;
+    margin-top: 10%;
+}
+.reset{
+    border-radius: 50px 50px 50px 50px;
+    display: inline-block;
+    height: 30px;
+    width: 160px;
+    background: aqua;
+    border: 1px black solid;
+    margin-top: 23px;
+}
+
+.Block {
+    border: solid 4px blue;
+    borderRadius: 15px;
+    margin: 40px;
+    padding: 20px;
+}
+.BlockCounter  {
+    border: solid 4px black;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+}
+.BlockButton {
+    border: solid 4px black;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+}
+.setting {
+    margin-top: 100px;
+    border-radius: 50px 50px 50px 50px;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px;
+    background-color: palegreen;
+    border: 1px solid black;
+}

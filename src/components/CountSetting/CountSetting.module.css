@@ -1,0 +1,21 @@
+.Block {
+
+
+    border: solid 4px blue;
+    border-radius: 15px;
+    margin: 40px;
+    padding: 20px;
+}
+.BlockCounter  {
+    margin-top: 20px;
+    border: solid 4px black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+}
+.InputContainer{
+    display: flex;
+    white-space: nowrap;
+}
