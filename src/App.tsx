@@ -13,7 +13,7 @@ function App() {
     let [counter, setCounter] = useState(0)
     const [value, setValue] = useState(0);
     const [value2, setValue2] = useState(0);
-    const [disButton, setDisButton] = useState(false)
+    const [disButton, setDisButton] = useState(false)// disabled button SET+
 
     const sum = counter + 1
     const counterMin = value2
