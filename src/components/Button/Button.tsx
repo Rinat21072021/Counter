@@ -1,18 +1,20 @@
 import React from "react";
 import style from "./Button.module.css"
-type ButtonType={
-    title:string
-    callback:()=>void
-    disabled:boolean
 
+type ButtonType = {
+    title: string
+    callback: () => void
+    disabled: boolean
+    disButton?: boolean
 }
-export const Button=(props:ButtonType)=>{
-const buttonDis = {
-    backgroundColor: props.disabled ? "white" : "green",
-}
+export const Button = (props: ButtonType) => {
 
-    return <button className = {style.button}
+    const buttonDis = {
+        backgroundColor: props.disabled ? "white" : "green",
+    }
+
+    return <button className={style.button}
                    style={buttonDis}
-                   disabled={ props.disabled }
+                   disabled={props.disabled}
                    onClick={props.callback}>{props.title}</button>
 }

@@ -52,7 +52,7 @@
 
 .Block {
     border: solid 4px blue;
-    borderRadius: 15px;
+    border-radius: 15px;
     margin: 40px;
     padding: 20px;
 }

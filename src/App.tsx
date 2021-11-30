@@ -1,11 +1,8 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.module.css';
-import {Counter} from "./Counter";
-
 import s from './App.module.css'
-
 import {CountSetting} from "./components/CountSetting/CountSetting";
-import {Button} from "./components/Button/Button";
+import {Counter} from "./components/Counter/Counter";
 
 
 function App() {
@@ -13,57 +10,84 @@ function App() {
     let [counter, setCounter] = useState(0)
     const [value, setValue] = useState(0);
     const [value2, setValue2] = useState(0);
-    const [disButton, setDisButton] = useState(false)// disabled button SET+
 
-    const sum = counter + 1
+    const [disInc, setDisInc] = useState(true)
+    const [disSet, setDisSet] = useState(true)
+    const [disReset, setDisReset] = useState(true)
+
+    useEffect(() => {
+        let storage = localStorage.getItem('KeyValueMax')
+        if (storage) {
+            let newValue = JSON.parse(storage)
+            setValue(newValue)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('KeyValueMax', JSON.stringify(value))
+
+    }, [value])
+
+
+    useEffect(() => {
+        let storage2 = localStorage.getItem('KeyValueMin')
+        if (storage2) {
+            let newValue2 = JSON.parse(storage2)
+            setValue2(newValue2)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('KeyValueMin', JSON.stringify(value2))
+    }, [value2])
+
+
     const counterMin = value2
     const counterMax = value
 
     const reset = () => {
         setCounter(counterMin)
     }
+
     const inc = () => {
-        if (counter < counterMax) {
-            setCounter(sum)
+        debugger
+        let currentIcValue = counter + 1
+
+        if (currentIcValue <= counterMax) {
+            setCounter(currentIcValue)
         }
-    }
 
-    const setHandler = () => {
-        setValue(value)
-        setCounter(value2)
-        setDisButton(false)
-
-
-        localStorage.setItem('KeyValueMax', JSON.stringify(value))
-        localStorage.setItem('KeyValueMin', JSON.stringify(value2))
-
+        if (currentIcValue === counterMax) {
+            setDisInc(true)
+            setDisReset(true)
+        }
 
     }
-    const disSet = (counter === counterMax || counter < 0) || (counterMin === counterMax || counterMin > counterMax)
-    const disInc = counter === counterMax || counter < 0
-    const disReset = counter === counterMax
 
     return (
         <div className={s.AppContainer}>
-            <div className={s.Block}>
-                <div className={s.BlockCounter}>
-                    <Counter counter={counter}
-                             counterMax={counterMax}/>
-                </div>
-                <div className={s.BlockButton}>
-                    <Button callback={inc} title={'Inc'} disabled={disInc}/>
-                    <Button callback={reset} title={'Reset'} disabled={disReset}/>
-                </div>
+            <Counter inc={inc}
+                     disInc={disInc}
+                     setDisInc={setDisInc}
+                     disReset={disReset}
+                     reset={reset}
+                     counter={counter}
+                     setCounter={setCounter}
+                     counterMax={counterMax}
 
-            </div>
-            <CountSetting
-                dis={disSet}
-                value={value}
-                setValue={setValue}
-                value2={value2}
-                setValue2={setValue2}
-                counter={counter}
-                setHandler={setHandler}
+            />
+
+            <CountSetting disSet={disSet}
+                          setDisSet={setDisSet}
+                          value={value}
+                          setValue={setValue}
+                          value2={value2}
+                          setValue2={setValue2}
+                          counter={counter}
+                          setDisInc={setDisInc}
+                          setDisReset={setDisReset}
+                          setCounter={setCounter}
+
             />
 
         </div>

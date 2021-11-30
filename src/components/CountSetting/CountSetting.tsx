@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
 import style from "./CountSetting.module.css";
 import {Button} from "../Button/Button";
 
@@ -8,18 +8,32 @@ type CountSettingType = {
     value2: number
     setValue2: (value2: number) => void
     counter: number
-    setHandler: () => void
-    dis:boolean
+    disSet: boolean
+    disButton?: boolean
+    setDisSet: (value: boolean) => void
+    setDisInc: (value: boolean) => void
+    setDisReset: (value: boolean) => void
+    setCounter: (value: number) => void
 }
 
 export function CountSetting(props: CountSettingType) {
 
     const maxChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setValue(+e.currentTarget.value)
-
+        props.setValue(e.currentTarget.valueAsNumber)
+        props.setDisSet(false)
     }
     const minChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.setValue2(+e.currentTarget.value)
+        props.setDisSet(false)
+
+    }
+
+    const disableSetButton = () => {
+        props.setDisSet(true)
+        props.setDisInc(false)
+        props.setDisReset(false)
+        props.setCounter(props.value2)
+
     }
 
 
@@ -37,7 +51,7 @@ export function CountSetting(props: CountSettingType) {
 
             </div>
             <div className={style.BlockCounter}>
-                <Button title={'Set+'} callback={props.setHandler} disabled={props.dis}/>
+                <Button title={'Set+'} disButton={props.disButton} callback={disableSetButton} disabled={props.disSet}/>
 
             </div>
 
