@@ -28,7 +28,7 @@ export function CountSetting(props: CountSettingType) {
 
     }
 
-    const disableSetButton = () => {
+    const setDisAndSetCounterMin = () => {
         props.setDisSet(true)
         props.setDisInc(false)
         props.setDisReset(false)
@@ -51,7 +51,7 @@ export function CountSetting(props: CountSettingType) {
 
             </div>
             <div className={style.BlockCounter}>
-                <Button title={'Set+'} disButton={props.disButton} callback={disableSetButton} disabled={props.disSet}/>
+                <Button title={'Set+'} disButton={props.disButton} callback={setDisAndSetCounterMin} disabled={props.disSet}/>
 
             </div>
 
